@@ -4,117 +4,217 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#1d6b45">
-<title>Lista de Espera | Centro Educacional Aprendiz</title>
+<title>Histórico Escolar | Centro Educacional Aprendiz</title>
 <style>
-:root{--g:#1d6b45;--gd:#155738;--gs:#eaf5ee;--ink:#183127;--muted:#6c7d75;--line:#dfe8e3;--bg:#f4f7f5;--yellow:#dbea98;--shadow:0 16px 45px rgba(20,70,45,.13)}
-*{box-sizing:border-box}body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
-.side{position:sticky;top:0;height:100vh;padding:24px 16px;color:#fff;background:linear-gradient(180deg,var(--gd),var(--g) 68%,#123f2b)}.brand{display:flex;gap:11px;align-items:center;padding:0 6px 23px;border-bottom:1px solid #ffffff2b}.logo{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--g);font-size:24px;border:3px solid var(--yellow);flex:none}.brand b{line-height:1.25}.brand small{display:block;opacity:.72}.nav{display:grid;gap:6px;margin-top:20px}.nav button{border:0;background:transparent;color:#fff;text-align:left;padding:12px;border-radius:10px}.nav .on,.nav button:hover{background:#ffffff20}.note{position:absolute;bottom:20px;left:16px;right:16px;padding:12px;background:#ffffff16;border-radius:10px;font-size:12px;line-height:1.45}
-.top{height:72px;background:#fff;border-bottom:1px solid var(--line);padding:0 28px;display:flex;align-items:center;justify-content:space-between}.top h1{font-size:20px;margin:0}.avatar{width:39px;height:39px;display:grid;place-items:center;background:var(--gs);color:var(--g);border-radius:50%;font-weight:bold}.content{max-width:1400px;margin:auto;padding:28px}.heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px;gap:16px}.heading h2{font-size:27px;margin:0 0 5px}.heading p{margin:0;color:var(--muted)}
-.primary,.ghost,.soft{border:0;border-radius:9px;padding:11px 15px;font-weight:700}.primary{background:var(--g);color:#fff;box-shadow:0 8px 18px #1d6b4530}.primary:hover{background:var(--gd)}.ghost{border:1px solid var(--line);background:#fff;color:var(--ink)}.soft{background:var(--gs);color:var(--g)}.demo{margin-bottom:13px;padding:10px 13px;border-radius:9px;background:#fff8dc;color:#785807;border:1px solid #eadc9a;font-size:12px}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}.card{padding:17px;background:#fff;border:1px solid var(--line);border-radius:14px}.card small{color:var(--muted);font-weight:600}.card b{display:block;font-size:29px;margin-top:6px}.panel{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;box-shadow:0 5px 24px rgba(21,65,45,.04)}.filters{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:10px;padding:16px;border-bottom:1px solid var(--line)}
-label{display:block;font-size:11px;font-weight:750;color:#53675e;margin-bottom:5px}input,select{width:100%;border:1px solid #ccd9d2;border-radius:8px;padding:10px;background:#fff;color:var(--ink)}input:focus,select:focus{outline:3px solid #1d6b4520;border-color:var(--g)}.tablebox{overflow:auto}table{border-collapse:collapse;width:100%;min-width:850px}th,td{text-align:left;padding:13px 15px;border-bottom:1px solid #edf2ef}th{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:#fbfcfb}.pos{width:34px;height:34px;display:grid;place-items:center;background:var(--gs);color:var(--g);font-weight:800;border-radius:9px}.student{font-weight:750}.sub{display:block;color:var(--muted);font-size:11px;margin-top:3px}.tag{display:inline-block;padding:6px 9px;border-radius:20px;font-size:11px;font-weight:700;background:#fff4d8;color:#92600c}.contacted{background:#e6f1fb;color:#32679d}.reply{background:#f2eafd;color:#7045a1}.offered{background:#e6f5eb;color:#267246}.enrolled{background:#d8f2e1;color:#17623a}.out{background:#f8e7e7;color:#a13c3c}.more{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 10px}.empty{display:none;padding:42px;text-align:center;color:var(--muted)}
-.modal{position:fixed;inset:0;background:#0b2c1e70;display:none;place-items:center;padding:18px;z-index:10}.modal.open{display:grid}.dialog{width:min(790px,100%);max-height:93vh;overflow:auto;background:#fff;border-radius:17px;box-shadow:var(--shadow)}.dhead,.dfoot{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;position:sticky;background:#fff;z-index:2}.dhead{top:0;border-bottom:1px solid var(--line)}.dfoot{bottom:0;border-top:1px solid var(--line)}.dhead h3{margin:0}.close{border:0;border-radius:50%;font-size:20px;width:34px;height:34px}.dbody{padding:21px}.section{margin-bottom:22px}.sect{font-size:12px;color:var(--g);font-weight:800;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:12px}.grid2,.grid3{display:grid;gap:12px}.grid2{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:repeat(3,1fr)}.contact{display:grid;grid-template-columns:1.2fr .8fr 1fr auto;gap:8px;margin-bottom:8px;align-items:end}
-.drawer{position:fixed;right:-460px;top:0;bottom:0;width:min(430px,100%);background:#fff;box-shadow:-10px 0 35px #1235;z-index:20;transition:.25s;overflow:auto}.drawer.open{right:0}.cover{height:115px;background:linear-gradient(135deg,var(--g),#439469);color:#fff;padding:21px}.cover button{float:right;background:transparent;border:0;color:#fff}.details{padding:21px}.initials{width:68px;height:68px;margin-top:-52px;border:5px solid #fff;border-radius:17px;background:var(--yellow);color:var(--g);display:grid;place-items:center;font-size:23px;font-weight:bold}.info{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:17px 0}.info div{padding:11px;background:#f6f9f7;border-radius:9px}.info small{display:block;color:var(--muted)}.timeline{border-left:2px solid #d9e9df;margin:22px 0 0 8px;padding-left:19px}.event{position:relative;margin-bottom:16px}.event:before{content:"";position:absolute;left:-25px;top:3px;width:9px;height:9px;border:3px solid #fff;border-radius:50%;background:var(--g)}.event p{margin:3px 0;color:var(--muted);font-size:12px}.toast{position:fixed;right:20px;bottom:20px;padding:12px 16px;background:#143e2b;color:#fff;border-radius:9px;opacity:0;transform:translateY(70px);transition:.2s;z-index:30}.toast.show{opacity:1;transform:none}.fab{display:none}
-@media(max-width:900px){.app{display:block}.side{display:none}.top{padding:13px 16px;height:auto}.content{padding:20px 14px 85px}.heading .primary{display:none}.heading h2{font-size:23px}.cards{grid-template-columns:1fr 1fr;gap:8px}.filters{grid-template-columns:1fr 1fr}.filters>div:first-child{grid-column:1/-1}.fab{display:block;position:fixed;right:17px;bottom:18px;width:56px;height:56px;border:0;border-radius:17px;background:var(--g);color:#fff;font-size:27px;box-shadow:0 10px 25px #1d6b4555;z-index:8}.grid2,.grid3{grid-template-columns:1fr}.contact{grid-template-columns:1fr 1fr}table{min-width:0}thead{display:none}tr{display:grid;grid-template-columns:43px 1fr auto;padding:13px;border-bottom:1px solid var(--line);align-items:center}td{border:0;padding:2px}td:first-child{grid-row:1/4}td:nth-child(2),td:nth-child(3),td:nth-child(5){grid-column:2}td:nth-child(4),td:nth-child(6){display:none}td:last-child{grid-column:3;grid-row:1/4}}
+:root{--green:#17643f;--green2:#237c51;--soft:#eaf5ee;--ink:#173127;--muted:#6b7d75;--line:#dbe6e0;--bg:#f4f7f5;--white:#fff;--yellow:#fff7d9;--red:#a73e3e;--shadow:0 16px 45px rgba(20,70,45,.12)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:14px Inter,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:238px 1fr;min-height:100vh}
+.sidebar{height:100vh;position:sticky;top:0;padding:23px 15px;color:#fff;background:linear-gradient(180deg,#135235,var(--green) 68%,#103c29)}.brand{display:flex;align-items:center;gap:11px;padding:0 7px 22px;border-bottom:1px solid #ffffff29}.logo{width:48px;height:48px;display:grid;place-items:center;border:3px solid #dbea98;border-radius:50%;background:#fff;color:var(--green);font-size:23px;flex:none}.brand b{line-height:1.2}.brand small{display:block;opacity:.7;margin-top:2px}.nav{display:grid;gap:6px;margin-top:20px}.nav button{padding:12px;border:0;border-radius:10px;text-align:left;color:#fff;background:transparent}.nav button.active,.nav button:hover{background:#ffffff1f}.side-note{position:absolute;left:15px;right:15px;bottom:20px;padding:12px;border-radius:10px;background:#ffffff14;font-size:12px;line-height:1.45}
+.main{min-width:0}.topbar{height:70px;display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:#fff;border-bottom:1px solid var(--line)}.topbar h1{font-size:19px;margin:0}.user{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:var(--soft);color:var(--green);font-weight:800}.content{max-width:1460px;margin:auto;padding:25px 28px 55px}.heading{display:flex;align-items:end;justify-content:space-between;gap:15px;margin-bottom:18px}.heading h2{margin:0 0 4px;font-size:25px}.heading p{margin:0;color:var(--muted)}
+.primary,.secondary,.ghost,.danger{border:0;border-radius:9px;padding:10px 14px;font-weight:750}.primary{color:#fff;background:var(--green);box-shadow:0 7px 18px #17643f32}.primary:hover{background:#114e31}.secondary{color:var(--green);background:var(--soft)}.ghost{color:var(--ink);background:#fff;border:1px solid var(--line)}.danger{color:var(--red);background:#f9eaea}.actions{display:flex;gap:8px;flex-wrap:wrap}
+.demo{padding:10px 13px;margin-bottom:14px;border:1px solid #ebdc97;border-radius:9px;background:var(--yellow);color:#765706;font-size:12px}.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:15px}.students,.editor{background:#fff;border:1px solid var(--line);border-radius:15px;box-shadow:0 5px 22px rgba(19,68,43,.045)}.students{align-self:start;overflow:hidden}.students-head{padding:15px;border-bottom:1px solid var(--line)}.students-head input{margin-top:9px}.student-list{padding:8px}.student-item{width:100%;border:0;background:transparent;display:flex;align-items:center;gap:10px;text-align:left;padding:10px;border-radius:10px;color:var(--ink)}.student-item.active,.student-item:hover{background:var(--soft)}.initial{width:38px;height:38px;display:grid;place-items:center;border-radius:10px;background:#dbea98;color:var(--green);font-weight:850;flex:none}.student-item small{display:block;color:var(--muted);margin-top:2px}.tabs{display:flex;gap:2px;padding:9px 10px 0;border-bottom:1px solid var(--line);overflow:auto}.tab{white-space:nowrap;border:0;border-bottom:3px solid transparent;background:transparent;color:var(--muted);padding:11px 12px;font-weight:700}.tab.active{color:var(--green);border-color:var(--green)}.pane{display:none;padding:21px}.pane.active{display:block}.pane-title{display:flex;align-items:start;justify-content:space-between;gap:12px;margin-bottom:18px}.pane-title h3{margin:0 0 4px;font-size:19px}.pane-title p{margin:0;color:var(--muted);font-size:12px}
+.section{margin-bottom:23px}.section-title{padding-bottom:8px;margin-bottom:12px;border-bottom:1px solid var(--line);color:var(--green);font-size:12px;font-weight:850;text-transform:uppercase;letter-spacing:.04em}.grid2,.grid3,.grid4{display:grid;gap:12px}.grid2{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:repeat(3,1fr)}.grid4{grid-template-columns:repeat(4,1fr)}.field label{display:block;margin-bottom:5px;color:#52675d;font-size:11px;font-weight:750}.field input,.field select,.field textarea{width:100%;padding:10px;border:1px solid #cbd9d1;border-radius:8px;background:#fff;color:var(--ink)}.field textarea{resize:vertical;min-height:80px}.field input:focus,.field select:focus,.field textarea:focus,.cell-input:focus{outline:3px solid #17643f1f;border-color:var(--green)}
+.table-scroll{overflow:auto;border:1px solid var(--line);border-radius:10px}.edit-table{width:100%;min-width:880px;border-collapse:collapse}.edit-table th,.edit-table td{padding:7px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);text-align:center}.edit-table th{background:#f7faf8;color:#52675d;font-size:10px;text-transform:uppercase}.edit-table td:first-child,.edit-table th:first-child{text-align:left;position:sticky;left:0;background:#fff;z-index:1;min-width:155px}.edit-table th:first-child{background:#f7faf8}.cell-input{width:58px;min-width:50px;padding:7px 4px;border:1px solid #d6e1db;border-radius:6px;text-align:center}.wide-input{width:100%;min-width:150px;padding:7px;border:1px solid #d6e1db;border-radius:6px}.hint{padding:10px 12px;margin-top:10px;border-left:3px solid var(--green);background:#f5faf7;color:var(--muted);font-size:12px;line-height:1.5}.step-actions{display:flex;justify-content:space-between;gap:10px;padding-top:18px;border-top:1px solid var(--line)}
+.preview-card{padding:22px;border:1px dashed #a9beb2;border-radius:12px;background:#f8fbf9;text-align:center}.preview-icon{font-size:42px}.preview-card h3{margin:8px 0 4px}.preview-card p{max-width:520px;margin:0 auto 16px;color:var(--muted)}
+.toast{position:fixed;right:20px;bottom:20px;z-index:80;padding:12px 16px;border-radius:9px;background:#133c29;color:#fff;opacity:0;transform:translateY(70px);transition:.2s}.toast.show{opacity:1;transform:none}
+.preview-overlay{position:fixed;inset:0;z-index:60;display:none;overflow:auto;padding:20px;background:#1a2d25df}.preview-overlay.open{display:block}.preview-toolbar{position:sticky;top:0;z-index:5;max-width:210mm;margin:0 auto 13px;display:flex;align-items:center;justify-content:space-between;padding:10px 12px;border-radius:10px;background:#fff;box-shadow:var(--shadow)}.print-area{width:210mm;margin:auto}.paper{width:210mm;min-height:297mm;margin:0 auto 18px;padding:9mm;background:#fff;color:#000;font-family:"Times New Roman",serif;box-shadow:0 8px 30px #0004;page-break-after:always}.paper:last-child{page-break-after:auto}.doc-head{text-align:center;position:relative;min-height:35mm;padding:1mm 25mm}.doc-head h1{font-size:17px;margin:0 0 2px;text-decoration:underline}.doc-head p{font-size:13px;font-weight:bold;margin:2px}.doc-logo,.doc-seal{position:absolute;top:2mm;width:21mm;height:21mm;border:1.5px solid #000;display:grid;place-items:center;font-size:9px;text-align:center}.doc-logo{left:0}.doc-seal{right:0;border-radius:50%}.doc-title{text-align:center;font-size:18px;margin:2mm 0 1mm}.doc-table{width:100%;border-collapse:collapse;table-layout:fixed}.doc-table th,.doc-table td{border:1px solid #000;padding:2px 3px;font-size:9px;text-align:center;height:6mm}.doc-table .left{text-align:left}.identity td{font-size:11px;height:10mm}.history-table th,.history-table td{font-size:7px;padding:1px;height:6mm}.history-table .subject{width:24mm;font-size:8px}.legend{border:1px solid #000;margin-top:5mm;padding:4mm;font-size:10px;min-height:27mm}.doc-section-title{text-align:center;font-size:15px;font-weight:bold;border:1px solid #000;padding:2px}.schools th,.schools td{font-size:9px;height:7mm}.performance th,.performance td{font-size:9px;height:7mm}.certificate{border:1px solid #000;padding:4mm;margin-top:6mm;min-height:90mm;font-size:12px;line-height:1.35}.certificate h2{text-align:center;margin:0 0 3mm;font-size:17px}.signatures{display:grid;grid-template-columns:1fr 1fr;gap:22mm;margin-top:19mm;text-align:center}.signature{border-top:1px solid #000;padding-top:2mm;font-size:10px}.doc-meta{display:flex;justify-content:space-between;margin-top:12mm}.muted-line{color:#444}
+@media(max-width:1050px){.layout{grid-template-columns:1fr}.students{display:none}.grid4{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.app{display:block}.sidebar{display:none}.topbar{height:auto;padding:14px 16px}.content{padding:19px 13px 45px}.heading{align-items:start}.heading h2{font-size:22px}.heading .secondary{display:none}.pane{padding:16px}.grid2,.grid3,.grid4{grid-template-columns:1fr}.actions .ghost{display:none}.tabs{padding-left:5px}.print-area,.paper{width:210mm}.preview-overlay{padding:8px}.preview-toolbar{border-radius:8px}}
+@page{size:A4 portrait;margin:0}
+@media print{body{background:#fff}body>*{visibility:hidden}.preview-overlay,#printArea,#printArea *{visibility:visible}.preview-overlay{position:absolute;display:block;inset:0;padding:0;background:#fff}.preview-toolbar{display:none}.print-area{position:absolute;left:0;top:0;margin:0}.paper{margin:0;box-shadow:none}}
 </style>
 </head>
 <body>
 <div class="app">
-<aside class="side">
+<aside class="sidebar">
   <div class="brand"><div class="logo">📚</div><div><b>Centro Educacional<br>Aprendiz</b><small>Gestão escolar</small></div></div>
-  <nav class="nav"><button class="on">▦ &nbsp; Lista de espera</button><button onclick="openForm()">＋ &nbsp; Nova inscrição</button><button>▤ &nbsp; Turmas e vagas</button><button onclick="exportCsv()">⇩ &nbsp; Exportar CSV</button><button>⚙ &nbsp; Configurações</button></nav>
-  <div class="note"><b>Protótipo sem banco</b><br>Os testes ficam somente neste navegador.</div>
+  <nav class="nav"><button class="active">▤ &nbsp; Históricos escolares</button><button>♙ &nbsp; Alunos</button><button>▦ &nbsp; Turmas</button><button>⚙ &nbsp; Configurações</button></nav>
+  <div class="side-note"><b>Protótipo sem banco</b><br>Os rascunhos permanecem apenas neste navegador.</div>
 </aside>
-<main>
-<header class="top"><h1>📚 Lista de espera</h1><div class="avatar">SE</div></header>
+<main class="main">
+<header class="topbar"><h1>Históricos escolares</h1><div class="user">SE</div></header>
 <div class="content">
-  <div class="heading"><div><h2>Visão geral das filas</h2><p>Interessados separados por ano letivo, série e turno.</p></div><button class="primary" onclick="openForm()">＋ Nova inscrição</button></div>
-  <div class="demo"><b>Ambiente de demonstração:</b> todos os nomes, contatos e datas abaixo são fictícios.</div>
-  <div class="cards"><div class="card"><small>Aguardando vaga</small><b id="mw">0</b></div><div class="card"><small>Contatados</small><b id="mc">0</b></div><div class="card"><small>Vagas oferecidas</small><b id="mo">0</b></div><div class="card"><small>Matriculados</small><b id="mm">0</b></div></div>
-  <section class="panel">
-    <div class="filters">
-      <div><label>ALUNO, RESPONSÁVEL OU TELEFONE</label><input id="query" placeholder="Pesquisar..." oninput="render()"></div>
-      <div><label>ANO LETIVO</label><select id="year" onchange="render()"><option>2027</option><option>2026</option></select></div>
-      <div><label>SÉRIE</label><select id="grade" onchange="render()"><option value="">Todas</option><option>Maternal</option><option>Pré I</option><option>Pré II</option><option>1º ano</option><option>2º ano</option><option>3º ano</option><option>4º ano</option><option>5º ano</option></select></div>
-      <div><label>TURNO</label><select id="shift" onchange="render()"><option value="">Todos</option><option>Matutino</option><option>Vespertino</option><option>Integral</option></select></div>
-    </div>
-    <div class="tablebox"><table><thead><tr><th>Posição</th><th>Aluno</th><th>Fila</th><th>Responsável</th><th>Situação</th><th>Inscrição</th><th></th></tr></thead><tbody id="rows"></tbody></table><div class="empty" id="empty">Nenhum aluno encontrado.</div></div>
-  </section>
+  <div class="heading"><div><h2>Gerar histórico escolar</h2><p>Preencha, revise e gere o documento em duas páginas A4.</p></div><div class="actions"><button class="secondary" onclick="newStudent()">＋ Novo aluno</button><button class="ghost" onclick="saveDraft()">Salvar rascunho</button><button class="primary" onclick="openPreview()">Visualizar PDF</button></div></div>
+  <div class="demo"><b>Ambiente de demonstração:</b> os dados exibidos são fictícios. O modelo oficial deve ser validado pela direção e secretaria da escola.</div>
+  <div class="layout">
+    <aside class="students"><div class="students-head"><b>Alunos</b><input id="studentSearch" placeholder="Pesquisar aluno..." oninput="filterStudents()"></div><div class="student-list" id="studentList"></div></aside>
+    <section class="editor">
+      <nav class="tabs" id="tabs">
+        <button class="tab active" data-tab="student">1. Aluno</button>
+        <button class="tab" data-tab="history">2. Histórico 1º–9º</button>
+        <button class="tab" data-tab="schools">3. Estudos realizados</button>
+        <button class="tab" data-tab="current">4. Ano atual</button>
+        <button class="tab" data-tab="certificate">5. Certificado</button>
+        <button class="tab" data-tab="preview">6. Prévia</button>
+      </nav>
+
+      <div class="pane active" id="pane-student">
+        <div class="pane-title"><div><h3>Dados do aluno</h3><p>Informações que aparecem no cabeçalho do histórico.</p></div></div>
+        <div class="section"><div class="section-title">Identificação</div><div class="grid3">
+          <div class="field" style="grid-column:span 2"><label>Nome completo *</label><input class="persist" data-key="studentName" value="Aluno Exemplo"></div>
+          <div class="field"><label>Data de nascimento *</label><input class="persist" data-key="birthDate" type="date" value="2012-04-18"></div>
+          <div class="field"><label>Naturalidade</label><input class="persist" data-key="birthCity" value="Mucuri"></div>
+          <div class="field"><label>UF</label><select class="persist" data-key="birthUf"><option>BA</option><option>MG</option><option>ES</option><option>SP</option><option>SC</option></select></div>
+          <div class="field"><label>Nacionalidade</label><input class="persist" data-key="nationality" value="Brasileira"></div>
+        </div></div>
+        <div class="section"><div class="section-title">Filiação</div><div class="grid2">
+          <div class="field"><label>Nome do pai</label><input class="persist" data-key="fatherName" value="Responsável Exemplo 01"></div>
+          <div class="field"><label>Nome da mãe</label><input class="persist" data-key="motherName" value="Responsável Exemplo 02"></div>
+        </div></div>
+        <div class="section"><div class="section-title">Dados internos</div><div class="grid3">
+          <div class="field"><label>Matrícula</label><input class="persist" data-key="registration" value="2026-0001"></div>
+          <div class="field"><label>Situação</label><select class="persist" data-key="studentStatus"><option>Cursando</option><option>Transferido</option><option>Concluído</option></select></div>
+          <div class="field"><label>Data de emissão</label><input class="persist" data-key="issueDate" type="date" value="2026-09-14"></div>
+        </div></div>
+        <div class="step-actions"><span></span><button class="primary" onclick="goTab('history')">Avançar →</button></div>
+      </div>
+
+      <div class="pane" id="pane-history">
+        <div class="pane-title"><div><h3>Notas e cargas horárias</h3><p>Cada ano aceita nota numérica, conceito ou texto como “I” de integrada.</p></div></div>
+        <div class="table-scroll"><table class="edit-table" id="historyEditor"></table></div>
+        <div class="hint"><b>N</b> = nota ou conceito &nbsp;•&nbsp; <b>CH</b> = carga horária anual. Use “–” quando não se aplicar.</div>
+        <div class="grid3" style="margin-top:14px">
+          <div class="field"><label>Dias letivos padrão</label><input class="persist" data-key="schoolDays" value="200"></div>
+          <div class="field"><label>Legenda adicional</label><input class="persist" data-key="additionalLegend" value="(I) Integrada"></div>
+          <div class="field"><label>Regime</label><input class="persist" data-key="educationRegime" value="Ensino Fundamental de 9 anos"></div>
+        </div>
+        <div class="step-actions"><button class="ghost" onclick="goTab('student')">← Voltar</button><button class="primary" onclick="goTab('schools')">Avançar →</button></div>
+      </div>
+
+      <div class="pane" id="pane-schools">
+        <div class="pane-title"><div><h3>Estudos realizados</h3><p>Instituição, ano, município e UF correspondentes a cada série.</p></div></div>
+        <div class="table-scroll"><table class="edit-table" id="schoolsEditor"></table></div>
+        <div class="step-actions"><button class="ghost" onclick="goTab('history')">← Voltar</button><button class="primary" onclick="goTab('current')">Avançar →</button></div>
+      </div>
+
+      <div class="pane" id="pane-current">
+        <div class="pane-title"><div><h3>Rendimento do ano atual</h3><p>Notas bimestrais, faltas e quantidade de aulas.</p></div></div>
+        <div class="grid4" style="margin-bottom:15px">
+          <div class="field"><label>Ano letivo</label><input class="persist" data-key="currentYear" value="2026"></div>
+          <div class="field"><label>Até</label><select class="persist" data-key="untilTerm"><option>1º bimestre</option><option selected>2º bimestre</option><option>3º bimestre</option><option>4º bimestre</option></select></div>
+          <div class="field"><label>Turma</label><input class="persist" data-key="currentGrade" value="8º ano"></div>
+          <div class="field"><label>Turno</label><select class="persist" data-key="currentShift"><option>Matutino</option><option selected>Vespertino</option><option>Noturno</option><option>Integral</option></select></div>
+        </div>
+        <div class="table-scroll"><table class="edit-table" id="currentEditor"></table></div>
+        <div class="step-actions"><button class="ghost" onclick="goTab('schools')">← Voltar</button><button class="primary" onclick="goTab('certificate')">Avançar →</button></div>
+      </div>
+
+      <div class="pane" id="pane-certificate">
+        <div class="pane-title"><div><h3>Certificado e assinaturas</h3><p>Texto final, código de segurança e responsáveis pela emissão.</p></div></div>
+        <div class="section"><div class="section-title">Certificação</div><div class="grid3">
+          <div class="field"><label>Condição do aluno</label><select class="persist" data-key="certificateCondition"><option>Cursando</option><option>Aprovado</option><option>Concluiu</option><option>Transferido</option></select></div>
+          <div class="field"><label>Série/ano certificado</label><input class="persist" data-key="certificateGrade" value="8º ano"></div>
+          <div class="field"><label>Código de segurança</label><input class="persist" data-key="securityCode" value="CEA-00001-2026"></div>
+          <div class="field"><label>Média mínima</label><input class="persist" data-key="minimumGrade" value="60,00"></div>
+          <div class="field"><label>Local</label><input class="persist" data-key="issuePlace" value="Itabatã / Mucuri / Bahia"></div>
+          <div class="field"><label>Texto legal/regimento</label><input class="persist" data-key="legalReference" value="Art. 42, § 1º - Regimento Interno"></div>
+        </div></div>
+        <div class="section"><div class="section-title">Assinaturas</div><div class="grid2">
+          <div class="field"><label>Diretor(a)</label><input class="persist" data-key="directorName" value="Diretor(a) responsável"></div>
+          <div class="field"><label>Secretário(a)</label><input class="persist" data-key="secretaryName" value="Secretário(a) responsável"></div>
+          <div class="field"><label>Autorização do(a) diretor(a)</label><input class="persist" data-key="directorAuth" placeholder="Portaria ou registro"></div>
+          <div class="field"><label>Autorização do(a) secretário(a)</label><input class="persist" data-key="secretaryAuth" placeholder="Portaria ou registro"></div>
+        </div></div>
+        <div class="section"><div class="section-title">Observações</div><div class="field"><textarea class="persist" data-key="observations">Será considerado aprovado o aluno que obtiver média igual ou superior a 60,00.</textarea></div></div>
+        <div class="step-actions"><button class="ghost" onclick="goTab('current')">← Voltar</button><button class="primary" onclick="goTab('preview')">Avançar →</button></div>
+      </div>
+
+      <div class="pane" id="pane-preview">
+        <div class="preview-card"><div class="preview-icon">📄</div><h3>Histórico pronto para revisão</h3><p>A prévia monta as duas páginas com os dados preenchidos. Na janela de impressão, escolha “Salvar como PDF”.</p><button class="primary" onclick="openPreview()">Visualizar documento</button></div>
+        <div class="step-actions"><button class="ghost" onclick="goTab('certificate')">← Voltar</button><button class="secondary" onclick="saveDraft()">Salvar rascunho</button></div>
+      </div>
+    </section>
+  </div>
 </div>
 </main>
 </div>
-<button class="fab" onclick="openForm()" aria-label="Nova inscrição">＋</button>
 
-<div class="modal" id="modal" onclick="if(event.target===this)closeForm()">
-<form class="dialog" id="registrationForm">
-  <div class="dhead"><div><h3>Nova inscrição</h3><small>Selecione a fila e informe os dados.</small></div><button type="button" class="close" onclick="closeForm()">×</button></div>
-  <div class="dbody">
-    <section class="section"><div class="sect">1. FILA DESEJADA</div><div class="grid3">
-      <div><label>Ano letivo *</label><select name="year"><option>2027</option><option>2026</option></select></div>
-      <div><label>Série *</label><select name="grade" required><option value="">Selecione</option><option>Maternal</option><option>Pré I</option><option>Pré II</option><option>1º ano</option><option>2º ano</option><option>3º ano</option><option>4º ano</option><option>5º ano</option></select></div>
-      <div><label>Turno *</label><select name="shift" required><option value="">Selecione</option><option>Matutino</option><option>Vespertino</option><option>Integral</option></select></div>
-    </div></section>
-    <section class="section"><div class="sect">2. DADOS DO ALUNO</div><div class="grid2">
-      <div><label>Nome completo *</label><input name="student" required></div><div><label>Data de nascimento</label><input name="birth" type="date"></div>
-      <div><label>Escola atual</label><input name="school"></div><div><label>Observações</label><input name="notes"></div>
-    </div></section>
-    <section class="section"><div class="sect">3. RESPONSÁVEL PRINCIPAL</div><div class="grid2">
-      <div><label>Nome completo *</label><input name="guardian" required></div>
-      <div><label>Parentesco *</label><select name="relation"><option>Mãe</option><option>Pai</option><option>Avó/Avô</option><option>Tia/Tio</option><option>Outro</option></select></div>
-      <div><label>Telefone / WhatsApp *</label><input name="phone" required placeholder="(00) 00000-0000"></div><div><label>E-mail</label><input name="email" type="email"></div>
-    </div></section>
-    <section class="section"><div class="sect">4. OUTROS CONTATOS</div><div id="extras"></div><button type="button" class="soft" onclick="addContact()">＋ Adicionar contato</button></section>
-  </div>
-  <div class="dfoot"><button type="button" class="ghost" onclick="closeForm()">Cancelar</button><button class="primary">Salvar inscrição</button></div>
-</form>
+<div class="preview-overlay" id="previewOverlay">
+  <div class="preview-toolbar"><b>Prévia do histórico escolar</b><div class="actions"><button class="ghost" onclick="closePreview()">Fechar</button><button class="primary" onclick="printDocument()">Imprimir / Salvar PDF</button></div></div>
+  <div class="print-area" id="printArea"></div>
 </div>
-
-<aside class="drawer" id="drawer"><div class="cover"><button onclick="closeDrawer()">✕</button><small>DETALHES DA INSCRIÇÃO</small></div><div class="details" id="details"></div></aside>
 <div class="toast" id="toast"></div>
 
 <script>
-const seed=[
-{id:1,student:"Aluno Exemplo 01",birth:"2019-05-14",year:"2027",grade:"2º ano",shift:"Matutino",guardian:"Responsável Exemplo 01",relation:"Mãe",phone:"(00) 00000-0001",status:"Aguardando",date:"12/09/2026 09:14",notes:"Registro totalmente fictício."},
-{id:2,student:"Aluno Exemplo 02",birth:"2018-11-03",year:"2027",grade:"3º ano",shift:"Matutino",guardian:"Responsável Exemplo 02",relation:"Pai",phone:"(00) 00000-0002",status:"Contatado",date:"12/09/2026 10:02",notes:"Contato simulado."},
-{id:3,student:"Aluno Exemplo 03",birth:"2021-02-20",year:"2027",grade:"Pré II",shift:"Vespertino",guardian:"Responsável Exemplo 03",relation:"Mãe",phone:"(00) 00000-0003",status:"Aguardando resposta",date:"13/09/2026 08:45",notes:"Família fictícia avaliará o turno."},
-{id:4,student:"Aluno Exemplo 04",birth:"2020-07-11",year:"2027",grade:"1º ano",shift:"Matutino",guardian:"Responsável Exemplo 04",relation:"Mãe",phone:"(00) 00000-0004",status:"Vaga oferecida",date:"13/09/2026 11:20",notes:"Prazo fictício de resposta."},
-{id:5,student:"Aluno Exemplo 05",birth:"2022-01-30",year:"2027",grade:"Pré I",shift:"Vespertino",guardian:"Responsável Exemplo 05",relation:"Pai",phone:"(00) 00000-0005",status:"Aguardando",date:"14/09/2026 09:08",notes:""},
-{id:6,student:"Aluno Exemplo 06",birth:"2019-09-08",year:"2027",grade:"2º ano",shift:"Integral",guardian:"Responsável Exemplo 06",relation:"Mãe",phone:"(00) 00000-0006",status:"Matriculado",date:"14/09/2026 10:12",notes:"Matrícula simulada."}
-];
-let data=JSON.parse(localStorage.getItem("cea-lista-espera")||"null")||seed;
-const esc=v=>String(v||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
-const statusClass=s=>({"Contatado":"contacted","Aguardando resposta":"reply","Vaga oferecida":"offered","Matriculado":"enrolled","Sem retorno":"out","Desistiu":"out"}[s]||"");
-const position=x=>data.filter(v=>v.year===x.year&&v.grade===x.grade&&v.shift===x.shift&&v.status!=="Desistiu"&&v.id<=x.id).length;
-function filtered(){const q=query.value.toLowerCase();return data.filter(x=>x.year===year.value&&(!grade.value||x.grade===grade.value)&&(!shift.value||x.shift===shift.value)&&(!q||(x.student+" "+x.guardian+" "+x.phone).toLowerCase().includes(q)))}
-function render(){
- const list=filtered();
- rows.innerHTML=list.map(x=>`<tr><td><div class="pos">${position(x)}º</div></td><td><span class="student">${esc(x.student)}</span><span class="sub">${x.birth?new Date(x.birth+"T12:00").toLocaleDateString("pt-BR"):"Nascimento não informado"}</span></td><td>${esc(x.grade)}<span class="sub">${esc(x.year)} • ${esc(x.shift)}</span></td><td>${esc(x.guardian)}<span class="sub">${esc(x.phone)}</span></td><td><span class="tag ${statusClass(x.status)}">${esc(x.status)}</span></td><td>${esc(x.date)}</td><td><button class="more" onclick="openDetails(${x.id})">Ver ›</button></td></tr>`).join("");
- empty.style.display=list.length?"none":"block";
- mw.textContent=data.filter(x=>x.status==="Aguardando").length;
- mc.textContent=data.filter(x=>x.status==="Contatado"||x.status==="Aguardando resposta").length;
- mo.textContent=data.filter(x=>x.status==="Vaga oferecida").length;
- mm.textContent=data.filter(x=>x.status==="Matriculado").length;
+const subjects=["Português","Matemática","História","Geografia","Ciências","Educação Física","Educação Artística","Ensino Religioso","Programa de Saúde","Inglês","Literatura","Informática","Filosofia","Espanhol"];
+const currentSubjects=["Português","Matemática","História","Geografia","Ciências","Inglês","Artes","Educação Física","Ensino Religioso"];
+const students=[{name:"Aluno Exemplo",detail:"8º ano • Cursando"},{name:"Estudante Demonstração",detail:"5º ano • Transferido"}];
+const demoGrades={"Português":["95","-","P","280","8,5","240","9,4","240","75,0","240","76,1","200","64,6","200","","","",""],"Matemática":["98","-","R","200","8,0","200","9,3","200","88,0","200","91,8","200","77,5","200","","","",""],"História":["100","-","O","120","7,5","80","8,7","80","86,1","120","83,0","120","89,5","120","","","",""],"Geografia":["92","-","M","120","8,0","80","8,9","80","75,0","120","81,9","120","46,6","120","","","",""],"Ciências":["95","-","O","80","8,0","120","8,6","80","83,3","120","90,9","120","80,0","120","","","",""]};
+const currentDemo={"Português":["89,5","77,2","","","",""],"Matemática":["100,0","94,0","","","",""],"História":["82,0","83,1","","","",""],"Geografia":["91,4","79,7","","","",""],"Ciências":["98,0","95,5","","","",""],"Inglês":["99,2","97,0","","","",""],"Artes":["93,0","96,5","","","",""],"Educação Física":["100,0","100,0","","","",""],"Ensino Religioso":["100,0","97,0","","","",""]};
+
+function buildStudents(){
+ studentList.innerHTML=students.map((s,i)=>`<button class="student-item ${i===0?"active":""}" data-name="${s.name.toLowerCase()}" onclick="selectStudent(this)"><span class="initial">${s.name.split(" ").slice(0,2).map(n=>n[0]).join("")}</span><span><b>${s.name}</b><small>${s.detail}</small></span></button>`).join("");
 }
-function openForm(){modal.classList.add("open");document.body.style.overflow="hidden"}
-function closeForm(){modal.classList.remove("open");document.body.style.overflow=""}
-function closeDrawer(){drawer.classList.remove("open")}
-function addContact(){extras.insertAdjacentHTML("beforeend",'<div class="contact"><input placeholder="Nome"><input placeholder="Parentesco"><input placeholder="Telefone"><button type="button" class="ghost" onclick="this.parentElement.remove()">×</button></div>')}
-registrationForm.addEventListener("submit",e=>{
- e.preventDefault();const f=new FormData(registrationForm),now=new Date();
- data.push({id:Math.max(0,...data.map(x=>x.id))+1,student:f.get("student"),birth:f.get("birth"),school:f.get("school"),notes:f.get("notes"),year:f.get("year"),grade:f.get("grade"),shift:f.get("shift"),guardian:f.get("guardian"),relation:f.get("relation"),phone:f.get("phone"),email:f.get("email"),status:"Aguardando",date:now.toLocaleDateString("pt-BR")+" "+now.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})});
- save();year.value=f.get("year");grade.value=f.get("grade");shift.value=f.get("shift");registrationForm.reset();extras.innerHTML="";closeForm();render();show("Inscrição adicionada à fila.");
-});
-function openDetails(id){
- const x=data.find(v=>v.id===id),initials=x.student.split(" ").slice(0,2).map(v=>v[0]).join("");
- details.innerHTML=`<div class="initials">${esc(initials)}</div><h2>${esc(x.student)}</h2><span class="tag ${statusClass(x.status)}">${esc(x.status)}</span><div class="info"><div><small>Fila</small><b>${esc(x.grade)} • ${esc(x.shift)}</b></div><div><small>Posição</small><b>${position(x)}º lugar</b></div><div><small>Responsável</small><b>${esc(x.guardian)}</b></div><div><small>Telefone</small><b>${esc(x.phone)}</b></div></div><label>ATUALIZAR SITUAÇÃO</label><select id="statusSelect" onchange="changeStatus(${x.id},this.value)"><option>Aguardando</option><option>Contatado</option><option>Aguardando resposta</option><option>Vaga oferecida</option><option>Matriculado</option><option>Sem retorno</option><option>Desistiu</option></select><p><b>Observações</b><span class="sub">${esc(x.notes||"Nenhuma observação registrada.")}</span></p><button class="primary" style="width:100%;margin-top:12px" onclick="show('WhatsApp desativado nos dados fictícios.')">Abrir conversa no WhatsApp</button><div class="timeline"><div class="event"><b>Inscrição realizada</b><p>${esc(x.date)} • ${esc(x.grade)}, ${esc(x.shift)}.</p></div><div class="event"><b>Situação atual</b><p>${esc(x.status)}</p></div></div>`;
- statusSelect.value=x.status;drawer.classList.add("open");
+function selectStudent(button){document.querySelectorAll(".student-item").forEach(x=>x.classList.remove("active"));button.classList.add("active");show("Aluno selecionado para demonstração.")}
+function filterStudents(){const q=studentSearch.value.toLowerCase();document.querySelectorAll(".student-item").forEach(x=>x.style.display=x.dataset.name.includes(q)?"flex":"none")}
+function buildHistory(){
+ let html="<thead><tr><th rowspan='2'>Componente curricular</th>";
+ for(let y=1;y<=9;y++)html+=`<th colspan="2">${y}º ano</th>`;
+ html+="</tr><tr>"+Array.from({length:9},()=>"<th>N</th><th>CH</th>").join("")+"</tr></thead><tbody>";
+ subjects.forEach((subject,si)=>{html+=`<tr><td>${subject}</td>`;for(let c=0;c<18;c++){const val=(demoGrades[subject]||[])[c]||"";html+=`<td><input class="cell-input persist history-cell" data-key="h-${si}-${c}" value="${val}"></td>`}html+="</tr>"});
+ html+="<tr><td><b>Total CH</b></td>"+Array.from({length:9},(_,y)=>`<td>–</td><td><input class="cell-input persist history-cell" data-key="total-${y}" value="${y===0?"800":y===1?"960":y<4?"840":y<7?"1000":""}"></td>`).join("")+"</tr></tbody>";
+ historyEditor.innerHTML=html;
 }
-function changeStatus(id,status){data.find(x=>x.id===id).status=status;save();render();openDetails(id);show("Situação atualizada.")}
-function save(){localStorage.setItem("cea-lista-espera",JSON.stringify(data))}
-function show(msg){toast.textContent=msg;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),2200)}
-function exportCsv(){const header=["Posição","Aluno","Ano letivo","Série","Turno","Responsável","Telefone","Situação","Inscrição"],lines=data.map(x=>[position(x),x.student,x.year,x.grade,x.shift,x.guardian,x.phone,x.status,x.date]),csv=[header,...lines].map(line=>line.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(";")).join("\n"),link=document.createElement("a");link.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"}));link.download="lista-de-espera-cea.csv";link.click();URL.revokeObjectURL(link.href)}
-document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeForm();closeDrawer()}});
-render();
+function buildSchools(){
+ let html="<thead><tr><th>Turma</th><th>Ano</th><th>Estabelecimento de ensino</th><th>Cidade</th><th>UF</th><th>Resultado</th></tr></thead><tbody>";
+ for(let y=1;y<=9;y++){html+=`<tr><td>${y}º ano</td><td><input class="cell-input persist" data-key="sy-${y}" value="${2018+y}"></td><td><input class="wide-input persist" data-key="ss-${y}" value="${y<8?(y<3?"Escola Exemplo":"Centro Educacional Exemplo"):""}"></td><td><input class="wide-input persist" data-key="sc-${y}" value="${y<8?"Itabatã - Mucuri":""}"></td><td><input class="cell-input persist" data-key="su-${y}" value="${y<8?"BA":""}"></td><td><select class="wide-input persist" data-key="sr-${y}"><option>Aprovado</option><option>Cursando</option><option>Reprovado</option><option>Transferido</option><option>Não cursado</option></select></td></tr>`}
+ schoolsEditor.innerHTML=html+"</tbody>";
+}
+function buildCurrent(){
+ let html="<thead><tr><th>Disciplina</th><th>1º bim.</th><th>2º bim.</th><th>3º bim.</th><th>4º bim.</th><th>Faltas</th><th>Aulas dadas</th></tr></thead><tbody>";
+ currentSubjects.forEach((s,i)=>{html+=`<tr><td>${s}</td>`;for(let c=0;c<6;c++)html+=`<td><input class="cell-input persist current-cell" data-key="c-${i}-${c}" value="${(currentDemo[s]||[])[c]||""}"></td>`;html+="</tr>"});
+ currentEditor.innerHTML=html+"</tbody>";
+}
+function goTab(name){
+ document.querySelectorAll(".tab").forEach(x=>x.classList.toggle("active",x.dataset.tab===name));
+ document.querySelectorAll(".pane").forEach(x=>x.classList.toggle("active",x.id==="pane-"+name));
+ document.querySelector(".editor").scrollIntoView({behavior:"smooth",block:"start"});
+}
+tabs.addEventListener("click",e=>{const b=e.target.closest(".tab");if(b)goTab(b.dataset.tab)});
+function value(key){return document.querySelector(`[data-key="${key}"]`)?.value||""}
+function safe(v){return String(v||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+function dateBr(v){if(!v)return "____/____/________";return new Date(v+"T12:00").toLocaleDateString("pt-BR")}
+function longDate(v){if(!v)return "____ de __________ de ______";return new Date(v+"T12:00").toLocaleDateString("pt-BR",{day:"2-digit",month:"long",year:"numeric"})}
+function historyDoc(){
+ let rows=subjects.map((s,si)=>`<tr><td class="left subject">${s}</td>${Array.from({length:18},(_,c)=>`<td>${safe(value(`h-${si}-${c}`))||"–"}</td>`).join("")}</tr>`).join("");
+ rows+=`<tr><td class="left subject"><b>Dias letivos</b></td>${Array.from({length:9},()=>`<td>–</td><td>${safe(value("schoolDays"))}</td>`).join("")}</tr>`;
+ rows+=`<tr><td class="left subject"><b>Total CH</b></td>${Array.from({length:9},(_,y)=>`<td>–</td><td>${safe(value(`total-${y}`))||"–"}</td>`).join("")}</tr>`;
+ return rows;
+}
+function schoolsDoc(){
+ return Array.from({length:9},(_,i)=>{const y=i+1;return `<tr><td>${y}º ano</td><td>${safe(value(`sy-${y}`))}</td><td class="left">${safe(value(`ss-${y}`))}</td><td>${safe(value(`sc-${y}`))}</td><td>${safe(value(`su-${y}`))}</td></tr>`}).join("");
+}
+function currentDoc(){
+ return currentSubjects.map((s,i)=>`<tr><td class="left">${s}</td>${Array.from({length:6},(_,c)=>`<td>${safe(value(`c-${i}-${c}`))||"–"}</td>`).join("")}</tr>`).join("");
+}
+function buildDocument(){
+ const name=safe(value("studentName")),condition=safe(value("certificateCondition")).toLowerCase();
+ printArea.innerHTML=`
+ <section class="paper">
+  <header class="doc-head"><div class="doc-logo">BRASÃO<br>OFICIAL</div><div class="doc-seal">LOGO<br>C.E.A.</div><h1>CENTRO EDUCACIONAL APRENDIZ</h1><p>CNPJ 40.037.221/0001-59</p><p>Rua Alagoas N, 210 – Centro</p><p>ITABATÃ – MUCURI – BA</p><p>Criação: Portaria 004/2023 – D.O.E. 20/07/2023</p></header>
+  <h2 class="doc-title">HISTÓRICO ESCOLAR</h2>
+  <table class="doc-table identity"><tr><td colspan="3" class="left"><b>Nome do aluno:</b> ${name}</td></tr><tr><td class="left"><b>Data de nascimento:</b> ${dateBr(value("birthDate"))}</td><td class="left"><b>Naturalidade/UF:</b> ${safe(value("birthCity"))} – ${safe(value("birthUf"))}</td><td class="left"><b>Nacionalidade:</b> ${safe(value("nationality"))}</td></tr><tr><td rowspan="2" style="width:22mm"><b>Filiação</b></td><td colspan="2" class="left"><b>Nome do pai:</b> ${safe(value("fatherName"))}</td></tr><tr><td colspan="2" class="left"><b>Nome da mãe:</b> ${safe(value("motherName"))}</td></tr></table>
+  <table class="doc-table history-table"><thead><tr><th rowspan="2" class="subject">Componentes curriculares</th>${Array.from({length:9},(_,i)=>`<th colspan="2">${i+1}º ano</th>`).join("")}</tr><tr>${Array.from({length:9},()=>"<th>N</th><th>CH</th>").join("")}</tr></thead><tbody>${historyDoc()}</tbody></table>
+  <div class="legend"><b>LEGENDA:</b><br>N – Nota ou conceito<br>CH – Carga horária anual<br>${safe(value("additionalLegend"))}<span style="margin-left:70px"><b>Regime:</b> ${safe(value("educationRegime"))}</span></div>
+ </section>
+ <section class="paper">
+  <div class="doc-section-title">ESTUDOS REALIZADOS NO ENSINO FUNDAMENTAL</div>
+  <table class="doc-table schools"><thead><tr><th style="width:18mm">Turma</th><th style="width:17mm">Ano</th><th>Estabelecimento de ensino</th><th style="width:38mm">Cidade</th><th style="width:13mm">UF</th></tr></thead><tbody>${schoolsDoc()}</tbody></table>
+  <p style="font-size:12px;margin:7mm 0 3mm"><b>Rendimento escolar do ano letivo:</b> ${safe(value("currentYear"))} &nbsp;&nbsp;&nbsp; <b>Até:</b> ${safe(value("untilTerm"))}<br><br><b>Turma:</b> ${safe(value("currentGrade"))} &nbsp;&nbsp;&nbsp; <b>Turno:</b> ${safe(value("currentShift"))}</p>
+  <table class="doc-table performance"><thead><tr><th>Atividades – áreas de estudos / disciplinas</th><th>1º bim.</th><th>2º bim.</th><th>3º bim.</th><th>4º bim.</th><th>Nº faltas</th><th>Aulas dadas</th></tr></thead><tbody>${currentDoc()}</tbody></table>
+  <section class="certificate"><h2>CERTIFICADO</h2><p>Certificamos que <b>${name}</b>, ${condition} o <b>${safe(value("certificateGrade"))}</b> do Ensino Fundamental no ano letivo de <b>${safe(value("currentYear"))}</b>, na forma da legislação educacional vigente e do Regimento Escolar.</p><p><b>Código de segurança:</b> ${safe(value("securityCode"))}</p><p><b>Observações:</b><br>${safe(value("observations"))}<br><b>(${safe(value("legalReference"))})</b></p><p style="text-align:right">(Este documento não contém emendas ou rasuras)</p><div class="doc-meta"><span><b>Local:</b> ${safe(value("issuePlace"))}</span><span><b>Data:</b> ${longDate(value("issueDate"))}</span></div><div class="signatures"><div class="signature"><b>${safe(value("directorName"))}</b><br>Diretor(a)<br><span class="muted-line">${safe(value("directorAuth"))}</span></div><div class="signature"><b>${safe(value("secretaryName"))}</b><br>Secretário(a)<br><span class="muted-line">${safe(value("secretaryAuth"))}</span></div></div></section>
+ </section>`;
+}
+function openPreview(){buildDocument();previewOverlay.classList.add("open");document.body.style.overflow="hidden"}
+function closePreview(){previewOverlay.classList.remove("open");document.body.style.overflow=""}
+function printDocument(){buildDocument();window.print()}
+function saveDraft(){
+ const draft={};document.querySelectorAll(".persist").forEach(el=>draft[el.dataset.key]=el.value);localStorage.setItem("cea-historico-rascunho",JSON.stringify(draft));show("Rascunho salvo neste navegador.");
+}
+function loadDraft(){const draft=JSON.parse(localStorage.getItem("cea-historico-rascunho")||"null");if(!draft)return;document.querySelectorAll(".persist").forEach(el=>{if(draft[el.dataset.key]!==undefined)el.value=draft[el.dataset.key]})}
+function newStudent(){if(!confirm("Limpar o formulário atual e iniciar outro histórico?"))return;localStorage.removeItem("cea-historico-rascunho");location.reload()}
+function show(message){toast.textContent=message;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),2300)}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closePreview()});
+buildStudents();buildHistory();buildSchools();buildCurrent();loadDraft();
 </script>
 </body>
 </html>
