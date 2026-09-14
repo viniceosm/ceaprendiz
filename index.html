@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#1d6b45">
+<title>Lista de Espera | Centro Educacional Aprendiz</title>
+<style>
+:root{--g:#1d6b45;--gd:#155738;--gs:#eaf5ee;--ink:#183127;--muted:#6c7d75;--line:#dfe8e3;--bg:#f4f7f5;--yellow:#dbea98;--shadow:0 16px 45px rgba(20,70,45,.13)}
+*{box-sizing:border-box}body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:var(--bg)}button,input,select{font:inherit}button{cursor:pointer}.app{display:grid;grid-template-columns:240px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;padding:24px 16px;color:#fff;background:linear-gradient(180deg,var(--gd),var(--g) 68%,#123f2b)}.brand{display:flex;gap:11px;align-items:center;padding:0 6px 23px;border-bottom:1px solid #ffffff2b}.logo{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:#fff;color:var(--g);font-size:24px;border:3px solid var(--yellow);flex:none}.brand b{line-height:1.25}.brand small{display:block;opacity:.72}.nav{display:grid;gap:6px;margin-top:20px}.nav button{border:0;background:transparent;color:#fff;text-align:left;padding:12px;border-radius:10px}.nav .on,.nav button:hover{background:#ffffff20}.note{position:absolute;bottom:20px;left:16px;right:16px;padding:12px;background:#ffffff16;border-radius:10px;font-size:12px;line-height:1.45}
+.top{height:72px;background:#fff;border-bottom:1px solid var(--line);padding:0 28px;display:flex;align-items:center;justify-content:space-between}.top h1{font-size:20px;margin:0}.avatar{width:39px;height:39px;display:grid;place-items:center;background:var(--gs);color:var(--g);border-radius:50%;font-weight:bold}.content{max-width:1400px;margin:auto;padding:28px}.heading{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px;gap:16px}.heading h2{font-size:27px;margin:0 0 5px}.heading p{margin:0;color:var(--muted)}
+.primary,.ghost,.soft{border:0;border-radius:9px;padding:11px 15px;font-weight:700}.primary{background:var(--g);color:#fff;box-shadow:0 8px 18px #1d6b4530}.primary:hover{background:var(--gd)}.ghost{border:1px solid var(--line);background:#fff;color:var(--ink)}.soft{background:var(--gs);color:var(--g)}.demo{margin-bottom:13px;padding:10px 13px;border-radius:9px;background:#fff8dc;color:#785807;border:1px solid #eadc9a;font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}.card{padding:17px;background:#fff;border:1px solid var(--line);border-radius:14px}.card small{color:var(--muted);font-weight:600}.card b{display:block;font-size:29px;margin-top:6px}.panel{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:hidden;box-shadow:0 5px 24px rgba(21,65,45,.04)}.filters{display:grid;grid-template-columns:1.6fr repeat(3,1fr);gap:10px;padding:16px;border-bottom:1px solid var(--line)}
+label{display:block;font-size:11px;font-weight:750;color:#53675e;margin-bottom:5px}input,select{width:100%;border:1px solid #ccd9d2;border-radius:8px;padding:10px;background:#fff;color:var(--ink)}input:focus,select:focus{outline:3px solid #1d6b4520;border-color:var(--g)}.tablebox{overflow:auto}table{border-collapse:collapse;width:100%;min-width:850px}th,td{text-align:left;padding:13px 15px;border-bottom:1px solid #edf2ef}th{font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);background:#fbfcfb}.pos{width:34px;height:34px;display:grid;place-items:center;background:var(--gs);color:var(--g);font-weight:800;border-radius:9px}.student{font-weight:750}.sub{display:block;color:var(--muted);font-size:11px;margin-top:3px}.tag{display:inline-block;padding:6px 9px;border-radius:20px;font-size:11px;font-weight:700;background:#fff4d8;color:#92600c}.contacted{background:#e6f1fb;color:#32679d}.reply{background:#f2eafd;color:#7045a1}.offered{background:#e6f5eb;color:#267246}.enrolled{background:#d8f2e1;color:#17623a}.out{background:#f8e7e7;color:#a13c3c}.more{border:1px solid var(--line);background:#fff;border-radius:8px;padding:7px 10px}.empty{display:none;padding:42px;text-align:center;color:var(--muted)}
+.modal{position:fixed;inset:0;background:#0b2c1e70;display:none;place-items:center;padding:18px;z-index:10}.modal.open{display:grid}.dialog{width:min(790px,100%);max-height:93vh;overflow:auto;background:#fff;border-radius:17px;box-shadow:var(--shadow)}.dhead,.dfoot{padding:18px 22px;display:flex;justify-content:space-between;align-items:center;position:sticky;background:#fff;z-index:2}.dhead{top:0;border-bottom:1px solid var(--line)}.dfoot{bottom:0;border-top:1px solid var(--line)}.dhead h3{margin:0}.close{border:0;border-radius:50%;font-size:20px;width:34px;height:34px}.dbody{padding:21px}.section{margin-bottom:22px}.sect{font-size:12px;color:var(--g);font-weight:800;border-bottom:1px solid var(--line);padding-bottom:8px;margin-bottom:12px}.grid2,.grid3{display:grid;gap:12px}.grid2{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:repeat(3,1fr)}.contact{display:grid;grid-template-columns:1.2fr .8fr 1fr auto;gap:8px;margin-bottom:8px;align-items:end}
+.drawer{position:fixed;right:-460px;top:0;bottom:0;width:min(430px,100%);background:#fff;box-shadow:-10px 0 35px #1235;z-index:20;transition:.25s;overflow:auto}.drawer.open{right:0}.cover{height:115px;background:linear-gradient(135deg,var(--g),#439469);color:#fff;padding:21px}.cover button{float:right;background:transparent;border:0;color:#fff}.details{padding:21px}.initials{width:68px;height:68px;margin-top:-52px;border:5px solid #fff;border-radius:17px;background:var(--yellow);color:var(--g);display:grid;place-items:center;font-size:23px;font-weight:bold}.info{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:17px 0}.info div{padding:11px;background:#f6f9f7;border-radius:9px}.info small{display:block;color:var(--muted)}.timeline{border-left:2px solid #d9e9df;margin:22px 0 0 8px;padding-left:19px}.event{position:relative;margin-bottom:16px}.event:before{content:"";position:absolute;left:-25px;top:3px;width:9px;height:9px;border:3px solid #fff;border-radius:50%;background:var(--g)}.event p{margin:3px 0;color:var(--muted);font-size:12px}.toast{position:fixed;right:20px;bottom:20px;padding:12px 16px;background:#143e2b;color:#fff;border-radius:9px;opacity:0;transform:translateY(70px);transition:.2s;z-index:30}.toast.show{opacity:1;transform:none}.fab{display:none}
+@media(max-width:900px){.app{display:block}.side{display:none}.top{padding:13px 16px;height:auto}.content{padding:20px 14px 85px}.heading .primary{display:none}.heading h2{font-size:23px}.cards{grid-template-columns:1fr 1fr;gap:8px}.filters{grid-template-columns:1fr 1fr}.filters>div:first-child{grid-column:1/-1}.fab{display:block;position:fixed;right:17px;bottom:18px;width:56px;height:56px;border:0;border-radius:17px;background:var(--g);color:#fff;font-size:27px;box-shadow:0 10px 25px #1d6b4555;z-index:8}.grid2,.grid3{grid-template-columns:1fr}.contact{grid-template-columns:1fr 1fr}table{min-width:0}thead{display:none}tr{display:grid;grid-template-columns:43px 1fr auto;padding:13px;border-bottom:1px solid var(--line);align-items:center}td{border:0;padding:2px}td:first-child{grid-row:1/4}td:nth-child(2),td:nth-child(3),td:nth-child(5){grid-column:2}td:nth-child(4),td:nth-child(6){display:none}td:last-child{grid-column:3;grid-row:1/4}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+  <div class="brand"><div class="logo">📚</div><div><b>Centro Educacional<br>Aprendiz</b><small>Gestão escolar</small></div></div>
+  <nav class="nav"><button class="on">▦ &nbsp; Lista de espera</button><button onclick="openForm()">＋ &nbsp; Nova inscrição</button><button>▤ &nbsp; Turmas e vagas</button><button onclick="exportCsv()">⇩ &nbsp; Exportar CSV</button><button>⚙ &nbsp; Configurações</button></nav>
+  <div class="note"><b>Protótipo sem banco</b><br>Os testes ficam somente neste navegador.</div>
+</aside>
+<main>
+<header class="top"><h1>📚 Lista de espera</h1><div class="avatar">SE</div></header>
+<div class="content">
+  <div class="heading"><div><h2>Visão geral das filas</h2><p>Interessados separados por ano letivo, série e turno.</p></div><button class="primary" onclick="openForm()">＋ Nova inscrição</button></div>
+  <div class="demo"><b>Ambiente de demonstração:</b> todos os nomes, contatos e datas abaixo são fictícios.</div>
+  <div class="cards"><div class="card"><small>Aguardando vaga</small><b id="mw">0</b></div><div class="card"><small>Contatados</small><b id="mc">0</b></div><div class="card"><small>Vagas oferecidas</small><b id="mo">0</b></div><div class="card"><small>Matriculados</small><b id="mm">0</b></div></div>
+  <section class="panel">
+    <div class="filters">
+      <div><label>ALUNO, RESPONSÁVEL OU TELEFONE</label><input id="query" placeholder="Pesquisar..." oninput="render()"></div>
+      <div><label>ANO LETIVO</label><select id="year" onchange="render()"><option>2027</option><option>2026</option></select></div>
+      <div><label>SÉRIE</label><select id="grade" onchange="render()"><option value="">Todas</option><option>Maternal</option><option>Pré I</option><option>Pré II</option><option>1º ano</option><option>2º ano</option><option>3º ano</option><option>4º ano</option><option>5º ano</option></select></div>
+      <div><label>TURNO</label><select id="shift" onchange="render()"><option value="">Todos</option><option>Matutino</option><option>Vespertino</option><option>Integral</option></select></div>
+    </div>
+    <div class="tablebox"><table><thead><tr><th>Posição</th><th>Aluno</th><th>Fila</th><th>Responsável</th><th>Situação</th><th>Inscrição</th><th></th></tr></thead><tbody id="rows"></tbody></table><div class="empty" id="empty">Nenhum aluno encontrado.</div></div>
+  </section>
+</div>
+</main>
+</div>
+<button class="fab" onclick="openForm()" aria-label="Nova inscrição">＋</button>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeForm()">
+<form class="dialog" id="registrationForm">
+  <div class="dhead"><div><h3>Nova inscrição</h3><small>Selecione a fila e informe os dados.</small></div><button type="button" class="close" onclick="closeForm()">×</button></div>
+  <div class="dbody">
+    <section class="section"><div class="sect">1. FILA DESEJADA</div><div class="grid3">
+      <div><label>Ano letivo *</label><select name="year"><option>2027</option><option>2026</option></select></div>
+      <div><label>Série *</label><select name="grade" required><option value="">Selecione</option><option>Maternal</option><option>Pré I</option><option>Pré II</option><option>1º ano</option><option>2º ano</option><option>3º ano</option><option>4º ano</option><option>5º ano</option></select></div>
+      <div><label>Turno *</label><select name="shift" required><option value="">Selecione</option><option>Matutino</option><option>Vespertino</option><option>Integral</option></select></div>
+    </div></section>
+    <section class="section"><div class="sect">2. DADOS DO ALUNO</div><div class="grid2">
+      <div><label>Nome completo *</label><input name="student" required></div><div><label>Data de nascimento</label><input name="birth" type="date"></div>
+      <div><label>Escola atual</label><input name="school"></div><div><label>Observações</label><input name="notes"></div>
+    </div></section>
+    <section class="section"><div class="sect">3. RESPONSÁVEL PRINCIPAL</div><div class="grid2">
+      <div><label>Nome completo *</label><input name="guardian" required></div>
+      <div><label>Parentesco *</label><select name="relation"><option>Mãe</option><option>Pai</option><option>Avó/Avô</option><option>Tia/Tio</option><option>Outro</option></select></div>
+      <div><label>Telefone / WhatsApp *</label><input name="phone" required placeholder="(00) 00000-0000"></div><div><label>E-mail</label><input name="email" type="email"></div>
+    </div></section>
+    <section class="section"><div class="sect">4. OUTROS CONTATOS</div><div id="extras"></div><button type="button" class="soft" onclick="addContact()">＋ Adicionar contato</button></section>
+  </div>
+  <div class="dfoot"><button type="button" class="ghost" onclick="closeForm()">Cancelar</button><button class="primary">Salvar inscrição</button></div>
+</form>
+</div>
+
+<aside class="drawer" id="drawer"><div class="cover"><button onclick="closeDrawer()">✕</button><small>DETALHES DA INSCRIÇÃO</small></div><div class="details" id="details"></div></aside>
+<div class="toast" id="toast"></div>
+
+<script>
+const seed=[
+{id:1,student:"Aluno Exemplo 01",birth:"2019-05-14",year:"2027",grade:"2º ano",shift:"Matutino",guardian:"Responsável Exemplo 01",relation:"Mãe",phone:"(00) 00000-0001",status:"Aguardando",date:"12/09/2026 09:14",notes:"Registro totalmente fictício."},
+{id:2,student:"Aluno Exemplo 02",birth:"2018-11-03",year:"2027",grade:"3º ano",shift:"Matutino",guardian:"Responsável Exemplo 02",relation:"Pai",phone:"(00) 00000-0002",status:"Contatado",date:"12/09/2026 10:02",notes:"Contato simulado."},
+{id:3,student:"Aluno Exemplo 03",birth:"2021-02-20",year:"2027",grade:"Pré II",shift:"Vespertino",guardian:"Responsável Exemplo 03",relation:"Mãe",phone:"(00) 00000-0003",status:"Aguardando resposta",date:"13/09/2026 08:45",notes:"Família fictícia avaliará o turno."},
+{id:4,student:"Aluno Exemplo 04",birth:"2020-07-11",year:"2027",grade:"1º ano",shift:"Matutino",guardian:"Responsável Exemplo 04",relation:"Mãe",phone:"(00) 00000-0004",status:"Vaga oferecida",date:"13/09/2026 11:20",notes:"Prazo fictício de resposta."},
+{id:5,student:"Aluno Exemplo 05",birth:"2022-01-30",year:"2027",grade:"Pré I",shift:"Vespertino",guardian:"Responsável Exemplo 05",relation:"Pai",phone:"(00) 00000-0005",status:"Aguardando",date:"14/09/2026 09:08",notes:""},
+{id:6,student:"Aluno Exemplo 06",birth:"2019-09-08",year:"2027",grade:"2º ano",shift:"Integral",guardian:"Responsável Exemplo 06",relation:"Mãe",phone:"(00) 00000-0006",status:"Matriculado",date:"14/09/2026 10:12",notes:"Matrícula simulada."}
+];
+let data=JSON.parse(localStorage.getItem("cea-lista-espera")||"null")||seed;
+const esc=v=>String(v||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]));
+const statusClass=s=>({"Contatado":"contacted","Aguardando resposta":"reply","Vaga oferecida":"offered","Matriculado":"enrolled","Sem retorno":"out","Desistiu":"out"}[s]||"");
+const position=x=>data.filter(v=>v.year===x.year&&v.grade===x.grade&&v.shift===x.shift&&v.status!=="Desistiu"&&v.id<=x.id).length;
+function filtered(){const q=query.value.toLowerCase();return data.filter(x=>x.year===year.value&&(!grade.value||x.grade===grade.value)&&(!shift.value||x.shift===shift.value)&&(!q||(x.student+" "+x.guardian+" "+x.phone).toLowerCase().includes(q)))}
+function render(){
+ const list=filtered();
+ rows.innerHTML=list.map(x=>`<tr><td><div class="pos">${position(x)}º</div></td><td><span class="student">${esc(x.student)}</span><span class="sub">${x.birth?new Date(x.birth+"T12:00").toLocaleDateString("pt-BR"):"Nascimento não informado"}</span></td><td>${esc(x.grade)}<span class="sub">${esc(x.year)} • ${esc(x.shift)}</span></td><td>${esc(x.guardian)}<span class="sub">${esc(x.phone)}</span></td><td><span class="tag ${statusClass(x.status)}">${esc(x.status)}</span></td><td>${esc(x.date)}</td><td><button class="more" onclick="openDetails(${x.id})">Ver ›</button></td></tr>`).join("");
+ empty.style.display=list.length?"none":"block";
+ mw.textContent=data.filter(x=>x.status==="Aguardando").length;
+ mc.textContent=data.filter(x=>x.status==="Contatado"||x.status==="Aguardando resposta").length;
+ mo.textContent=data.filter(x=>x.status==="Vaga oferecida").length;
+ mm.textContent=data.filter(x=>x.status==="Matriculado").length;
+}
+function openForm(){modal.classList.add("open");document.body.style.overflow="hidden"}
+function closeForm(){modal.classList.remove("open");document.body.style.overflow=""}
+function closeDrawer(){drawer.classList.remove("open")}
+function addContact(){extras.insertAdjacentHTML("beforeend",'<div class="contact"><input placeholder="Nome"><input placeholder="Parentesco"><input placeholder="Telefone"><button type="button" class="ghost" onclick="this.parentElement.remove()">×</button></div>')}
+registrationForm.addEventListener("submit",e=>{
+ e.preventDefault();const f=new FormData(registrationForm),now=new Date();
+ data.push({id:Math.max(0,...data.map(x=>x.id))+1,student:f.get("student"),birth:f.get("birth"),school:f.get("school"),notes:f.get("notes"),year:f.get("year"),grade:f.get("grade"),shift:f.get("shift"),guardian:f.get("guardian"),relation:f.get("relation"),phone:f.get("phone"),email:f.get("email"),status:"Aguardando",date:now.toLocaleDateString("pt-BR")+" "+now.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})});
+ save();year.value=f.get("year");grade.value=f.get("grade");shift.value=f.get("shift");registrationForm.reset();extras.innerHTML="";closeForm();render();show("Inscrição adicionada à fila.");
+});
+function openDetails(id){
+ const x=data.find(v=>v.id===id),initials=x.student.split(" ").slice(0,2).map(v=>v[0]).join("");
+ details.innerHTML=`<div class="initials">${esc(initials)}</div><h2>${esc(x.student)}</h2><span class="tag ${statusClass(x.status)}">${esc(x.status)}</span><div class="info"><div><small>Fila</small><b>${esc(x.grade)} • ${esc(x.shift)}</b></div><div><small>Posição</small><b>${position(x)}º lugar</b></div><div><small>Responsável</small><b>${esc(x.guardian)}</b></div><div><small>Telefone</small><b>${esc(x.phone)}</b></div></div><label>ATUALIZAR SITUAÇÃO</label><select id="statusSelect" onchange="changeStatus(${x.id},this.value)"><option>Aguardando</option><option>Contatado</option><option>Aguardando resposta</option><option>Vaga oferecida</option><option>Matriculado</option><option>Sem retorno</option><option>Desistiu</option></select><p><b>Observações</b><span class="sub">${esc(x.notes||"Nenhuma observação registrada.")}</span></p><button class="primary" style="width:100%;margin-top:12px" onclick="show('WhatsApp desativado nos dados fictícios.')">Abrir conversa no WhatsApp</button><div class="timeline"><div class="event"><b>Inscrição realizada</b><p>${esc(x.date)} • ${esc(x.grade)}, ${esc(x.shift)}.</p></div><div class="event"><b>Situação atual</b><p>${esc(x.status)}</p></div></div>`;
+ statusSelect.value=x.status;drawer.classList.add("open");
+}
+function changeStatus(id,status){data.find(x=>x.id===id).status=status;save();render();openDetails(id);show("Situação atualizada.")}
+function save(){localStorage.setItem("cea-lista-espera",JSON.stringify(data))}
+function show(msg){toast.textContent=msg;toast.classList.add("show");setTimeout(()=>toast.classList.remove("show"),2200)}
+function exportCsv(){const header=["Posição","Aluno","Ano letivo","Série","Turno","Responsável","Telefone","Situação","Inscrição"],lines=data.map(x=>[position(x),x.student,x.year,x.grade,x.shift,x.guardian,x.phone,x.status,x.date]),csv=[header,...lines].map(line=>line.map(v=>'"'+String(v).replaceAll('"','""')+'"').join(";")).join("\n"),link=document.createElement("a");link.href=URL.createObjectURL(new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8"}));link.download="lista-de-espera-cea.csv";link.click();URL.revokeObjectURL(link.href)}
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){closeForm();closeDrawer()}});
+render();
+</script>
+</body>
+</html>
